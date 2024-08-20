@@ -11,16 +11,29 @@ root.render(
   </React.StrictMode>
 );
 
-setInterval(() => {
-  root.render(
-    <p>現在時刻: {(new Date()).toLocaleString()}</p>
-  )
-}, 1000)
+// setInterval(() => {
+//   root.render(
+//     <p>現在時刻: {(new Date()).toLocaleString()}</p>
+//   )
+// }, 1000)
 
+// {...}構文
+const name = '鈴木';
 root.render(
   <>
-    <p>こんにちは、世界!</p>
-    <p>はじめまして、React</p>
+    <p>こんにちは、{name}です。</p>
+    <p>こんにちは、{`たろう`}です。</p>
+  </>
+);
+
+const content = `<h3>WINGSプロジェクト</h3>
+  <img src="https:///wings.msn.to/image/wings.jpg" />`;
+root.render(
+  // 1つ目はリンクが文字列として出力される
+  // 2つ目は動的にHTML文字列を生成し表示させることができる
+  <>
+    <p>{content}</p>
+    <p dangerouslySetInnerHTML={{__html: content}}></p>
   </>
 );
 
