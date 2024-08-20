@@ -37,16 +37,43 @@ root.render(
   </>
 );
 
-const tag = (
-  <ul>
-    {/* コメントです　　*/}
-    <li /*
-      タグ内にコメントできる
-    */>React</li>
-    <li // これも大丈夫
-      >Vue.js</li>
-  </ul>
+root.render(
+  <>
+    <div>{'Tom &amp; jerry'}</div>
+    {/*実体参照にしたい場合*/}
+    {/*エスケープシーケンスを用いる*/}
+    <div>{'Tom ¥u0026 jerry'}</div>
+    {/*Unicodeコードポイントから取得*/}
+    <div>{`Tom ${String.fromCodePoint(38)} jerry`}</div>
+    <div></div>
+  </>
 );
+
+const dest = 'https://ja.react.dev';
+root.render(
+  // 属性値をクォートで囲まないこと
+  <a href={dest}>Reac 本家サイト</a>
+);
+
+// 複数の属性をまとめて記述することができる
+const attrs = {
+  href: 'https://wings.msn.to/',
+  download: false,
+  target: '__blank',
+  rel: 'help'
+};
+root.render(
+  <a {...attrs}>サポートページ</a>
+);
+
+// 属性値の規定値はtrueであることから以下の2つは同じ意味
+root.render(
+  <>
+    <a href='index.html' download>トップへ</a>
+    <a href='index.html' download={true}>トップへ</a>
+  </>
+);
+
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
