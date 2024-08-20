@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './chap02/class.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -72,6 +73,22 @@ root.render(
     <a href='index.html' download>トップへ</a>
     <a href='index.html' download={true}>トップへ</a>
   </>
+);
+
+// styleについて以下のように記述することができる
+// しかし、className属性で基本記述するため非推奨
+const props = {
+  color: 'White',
+  backgroundColor: 'Blue',
+  padding: 3
+};
+root.render(
+  <p style={props}>WINGSプロジェクト</p>
+);
+
+// classNameを用いた書き方
+root.render(
+  <p className="hoge">WINGSプロジェクト</p>
 );
 
 // If you want to start measuring performance in your app, pass a function
