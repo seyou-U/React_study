@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import './chap02/class.css'
 import App from './App';
+import EventBasic from './chap03/EventBasic';
 import reportWebVitals from './reportWebVitals';
+import MyHello from './chap03/MyHello';
+import StateBasic from './chap03/StateBasic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -125,6 +128,20 @@ root.render(
   ),
 );
 
+// propsの呼び出し元
+root.render(
+  <MyHello myName="鈴木"/>
+);
+
+// クリックイベントについて
+root.render(
+  <EventBasic type="time"/>
+)
+
+// Stateのk本
+root.render(
+  <StateBasic init={0} />
+);
 
 
 // If you want to start measuring performance in your app, pass a function
