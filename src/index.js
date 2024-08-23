@@ -53,7 +53,7 @@ root.render(
 const dest = 'https://ja.react.dev';
 root.render(
   // 属性値をクォートで囲まないこと
-  <a href={dest}>Reac 本家サイト</a>
+  <a href={dest}>React 本家サイト</a>
 );
 
 // 複数の属性をまとめて記述することができる
@@ -90,6 +90,42 @@ root.render(
 root.render(
   <p className="hoge">WINGSプロジェクト</p>
 );
+
+// createElementメソッドの書き方
+const title = 'これからはじめるVue.js 3実戦入門';
+
+// 以下の2つは等価である
+root.render(
+  <div>
+    <p>「{title}」 (SBクリエイティブ刊)</p>
+    <img src="https://wings.msn.to/books/978-4-8156-1336-5/978-4-8156-1336-5.jpg" alt='{title} '/>
+    絶賛発売中!
+  </div>
+);
+
+root.render(
+  // 上位のdiv要素を作成する
+  React.createElement(
+    'div',
+    { className: 'main' },
+    // 子要素のp、img、テキストを列挙
+    React.createElement(
+      'p',
+      null, // 属性は省略
+      `「${title}」 (SBクリエイティブ刊)`
+    ),
+    React.createElement(
+      'img',
+      {
+        src: 'https://wings.msn.to/books/978-4-8156-1336-5/978-4-8156-1336-5.jpg',
+        alt: title
+      }
+    ),
+    '絶賛発売中!'
+  ),
+);
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
