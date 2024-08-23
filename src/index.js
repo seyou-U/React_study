@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './chap02/class.css'
+import books from './chap03/books';
+import reportWebVitals from './reportWebVitals';
 import App from './App';
 import EventBasic from './chap03/EventBasic';
-import reportWebVitals from './reportWebVitals';
+import ForList from './chap03/ForList';
+import ForNest from './chap03/ForNest';
 import MyHello from './chap03/MyHello';
 import StateBasic from './chap03/StateBasic';
+import SelectStyle from './chap03/SelectStyle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -138,11 +142,25 @@ root.render(
   <EventBasic type="time"/>
 )
 
-// Stateのk本
+// Stateの基本
 root.render(
   <StateBasic init={0} />
 );
 
+// 繰り返し処理について
+root.render(
+  <ForList src={books} />
+);
+
+// コンポーネントの切り分け
+root.render(
+  <ForNest src={books} />
+);
+
+// 演算子を用いてスタイルを選択的に適用する
+root.render(
+  <SelectStyle mode="dark" />
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
