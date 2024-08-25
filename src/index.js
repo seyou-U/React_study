@@ -11,6 +11,9 @@ import ForNest from './chap03/ForNest';
 import MyHello from './chap03/MyHello';
 import StateBasic from './chap03/StateBasic';
 import SelectStyle from './chap03/SelectStyle';
+import StyledPanel from './chap03/StyledPanel';
+import TitledPanel from './chap03/TitledPanel';
+import ListTemplate from './chap03/ListTemplate';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -160,6 +163,73 @@ root.render(
 // 演算子を用いてスタイルを選択的に適用する
 root.render(
   <SelectStyle mode="dark" />
+);
+
+// コンポーネント配下のコンテンツをテンプレートに反映させる
+root.render(
+  <StyledPanel>
+    <p>メンバー募集中！</p>
+    <p>ようこそ、WINGSプロジェクトへ!!</p>
+    <MyHello myName="鈴木" />
+  </StyledPanel>
+);
+
+// 複数のchildrenを引き渡す
+root.render(<TitledPanel
+  title={
+    <p>メンバー募集中!</p>
+  }
+  body={
+    <p>ようこそ、WINGSプロジェクトへ!!</p>
+  }>
+  </TitledPanel>
+);
+
+// もしくは変数に切り出すことも可能
+const titleChild = <p>メンバー募集中！</p>;
+const bodyChild = <p>ようこそ、WINGSプロジェクトへ!!</p>
+root.render(
+  <TitledPanel title={titleChild} body={bodyChild}></TitledPanel>
+);
+
+// key属性をキーに目的の要素を取り出す
+root.render(
+  <TitledPanel>
+    <p key="title">メンバー大歓迎</p>
+    <p key="body">ようこそ、WINGSプロジェクトへ!!!!!</p>
+  </TitledPanel>
+);
+
+// childrenに対しパラメータを渡す
+root.render(
+  <ListTemplate src={books}>
+  {/*関数化することで引数として渡すことができる(elem)*/}
+  {elem =>
+    <>
+      <dt>
+        <a href={'https://wings.msn.to/books/${elem.isbn}/${elem.isbn}.jpg'}>
+         {elem.title} ({elem.price}円)
+        </a>
+      </dt>
+      <dd>{elem.summary}</dd>
+    </>
+  }
+  </ListTemplate>
+);
+
+// レンダードロップ
+root.render(
+  <ListTemplate src={books} render={ elem => (
+    <>
+      <dt>
+        <a href={'https://wings.msn.to/books/${elem.isbn}/${elem.isbn}.jpg'}>
+          {elem.title} ({elem.price}円)
+        </a>
+      </dt>
+      <dd>{elem.summary}</dd>
+    </>
+  )}
+  ></ListTemplate>
 );
 
 // If you want to start measuring performance in your app, pass a function
