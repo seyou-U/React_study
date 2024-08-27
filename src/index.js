@@ -5,8 +5,11 @@ import './chap02/class.css'
 import books from './chap03/books';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
+import EventArgs from './chap03/EventArgs';
+import EventArgs2 from './chap03/EventArgs2';
 import EventBasic from './chap03/EventBasic';
 import EventError from './chap03/EventError';
+import EventKey from './chap03/EventKey';
 import EventMouse from './chap03/EventMouse';
 import EventObj from './chap03/EventObj';
 import ForList from './chap03/ForList';
@@ -19,8 +22,6 @@ import StyledPanel from './chap03/StyledPanel';
 import TitledPanel from './chap03/TitledPanel';
 import TypeProp, {Member} from './chap03/TypeProp';
 import ListTemplate from './chap03/ListTemplate';
-import EventKey from './chap03/EventKey';
-import EventArgs from './chap03/EventArgs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -326,6 +327,9 @@ root.render(
   <EventArgs />
 );
 
-
+// 独自イベント属性を用いて実行する
+root.render(
+  <EventArgs2 />
+);
 
 reportWebVitals();
