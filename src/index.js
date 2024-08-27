@@ -6,6 +6,9 @@ import books from './chap03/books';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 import EventBasic from './chap03/EventBasic';
+import EventError from './chap03/EventError';
+import EventMouse from './chap03/EventMouse';
+import EventObj from './chap03/EventObj';
 import ForList from './chap03/ForList';
 import ForNest from './chap03/ForNest';
 import MyHello from './chap03/MyHello';
@@ -16,6 +19,8 @@ import StyledPanel from './chap03/StyledPanel';
 import TitledPanel from './chap03/TitledPanel';
 import TypeProp, {Member} from './chap03/TypeProp';
 import ListTemplate from './chap03/ListTemplate';
+import EventKey from './chap03/EventKey';
+import EventArgs from './chap03/EventArgs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -291,6 +296,36 @@ root.render(
 root.render(
   <StateParent />
 );
+
+// マウスに関するイベント
+root.render(
+  <EventMouse
+  alt="ロゴ画像"
+  beforeSrc="https://www.web-deli.com/image/linkbanner_l.gif"
+  afterSrc="https://www.web-deli.com/image/home_chara.gif" />
+);
+
+// 画像が読み込めなかった際、ダミー画像を表示させる
+root.render(
+  <EventError src="./image/wings.jpg"
+    alt="サンプル画像" />
+);
+
+// クリック時にイベントオブジェクトをログ出力する
+root.render(
+  <EventObj />
+);
+
+// テキストボックスの中でctrl + qキーが押下された際にメッセージを表示させる
+root.render(
+  <EventKey />
+);
+
+// イベントハンドラーに任意の引数を渡す
+root.render(
+  <EventArgs />
+);
+
 
 
 reportWebVitals();
