@@ -22,6 +22,9 @@ import StyledPanel from './chap03/StyledPanel';
 import TitledPanel from './chap03/TitledPanel';
 import TypeProp, {Member} from './chap03/TypeProp';
 import ListTemplate from './chap03/ListTemplate';
+import EventPropagation from './chap03/EventPropagation';
+import EventOnce from './chap03/EventOnce';
+import EventPassive from './chap03/EventPassive';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -255,42 +258,42 @@ root.render(
 
 root.render(
   // OKのケース
-  // <TypeProp prop2={"男性"} />
+  <TypeProp prop2={"男性"} />
 
   // NGのケース
-  <TypeProp prop2="hoge"/>
+  // <TypeProp prop2="hoge"/>
 );
 
 root.render(
   // OKのケース
-  // <TypeProp prop3="鈴木" />
+  <TypeProp prop3="鈴木" />
 
   // NGのケース
-  <TypeProp prop3={new Number()}/>
+  // <TypeProp prop3={new Number()}/>
 );
 
 root.render(
   // OKのケース
-  // <TypeProp prop4={[2, 4]} />
+  <TypeProp prop4={[2, 4]} />
 
   // NGのケース
-  <TypeProp prop4={[12, "山田"]} />
+  // <TypeProp prop4={[12, "山田"]} />
 );
 
 root.render(
   // OKのケース
-  // <TypeProp prop5={{ '鈴木': 15, '佐藤': 30}} />
+  <TypeProp prop5={{ '鈴木': 15, '佐藤': 30}} />
 
   // NGのケース
-  <TypeProp prop5={{ '鈴木': 15, '佐藤': '三十'}} />
+  // <TypeProp prop5={{ '鈴木': 15, '佐藤': '三十'}} />
 );
 
 root.render(
   // OKのケース
-  // <TypeProp prop6={{ name: '鈴木', age: 30, sex: '女性', blood: 'A'}} />
+  <TypeProp prop6={{ name: '鈴木', age: 30, sex: '女性', blood: 'A'}} />
 
   // NGのケース
-  <TypeProp prop6={{ age: 30, sex: '女性'}} />
+  // <TypeProp prop6={{ age: 30, sex: '女性'}} />
 );
 
 // 子コンポーネントから親コンポーネントに対して情報を渡す
@@ -330,6 +333,21 @@ root.render(
 // 独自イベント属性を用いて実行する
 root.render(
   <EventArgs2 />
+);
+
+// イベントの伝播について
+root.render(
+  <EventPropagation />
+);
+
+// 初回イベントでのみハンドラーを実行させる
+root.render(
+  <EventOnce />
+);
+
+// Passiveモードでイベントハンドラーを設置する
+root.render(
+  <EventPassive />
 );
 
 reportWebVitals();
