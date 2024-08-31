@@ -2,8 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './chap02/class.css'
-import App from './App';
+import books from './chap03/books';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
+import EventArgs from './chap03/EventArgs';
+import EventArgs2 from './chap03/EventArgs2';
+import EventBasic from './chap03/EventBasic';
+import EventError from './chap03/EventError';
+import EventKey from './chap03/EventKey';
+import EventMouse from './chap03/EventMouse';
+import EventObj from './chap03/EventObj';
+import ForList from './chap03/ForList';
+import ForNest from './chap03/ForNest';
+import MyHello from './chap03/MyHello';
+import StateBasic from './chap03/StateBasic';
+import StateParent from './chap03/StateParent';
+import SelectStyle from './chap03/SelectStyle';
+import StyledPanel from './chap03/StyledPanel';
+import TitledPanel from './chap03/TitledPanel';
+import TypeProp, {Member} from './chap03/TypeProp';
+import ListTemplate from './chap03/ListTemplate';
+import EventPropagation from './chap03/EventPropagation';
+import EventOnce from './chap03/EventOnce';
+import EventPassive from './chap03/EventPassive';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -125,9 +146,208 @@ root.render(
   ),
 );
 
+// propsの呼び出し元
+root.render(
+  <MyHello myName="鈴木"/>
+);
 
+// クリックイベントについて
+root.render(
+  <EventBasic type="time"/>
+)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Stateの基本
+root.render(
+  <StateBasic init={0} />
+);
+
+// 繰り返し処理について
+root.render(
+  <ForList src={books} />
+);
+
+// コンポーネントの切り分け
+root.render(
+  <ForNest src={books} />
+);
+
+// 演算子を用いてスタイルを選択的に適用する
+root.render(
+  <SelectStyle mode="dark" />
+);
+
+// コンポーネント配下のコンテンツをテンプレートに反映させる
+root.render(
+  <StyledPanel>
+    <p>メンバー募集中！</p>
+    <p>ようこそ、WINGSプロジェクトへ!!</p>
+    <MyHello myName="鈴木" />
+  </StyledPanel>
+);
+
+// 複数のchildrenを引き渡す
+root.render(<TitledPanel
+  title={
+    <p>メンバー募集中!</p>
+  }
+  body={
+    <p>ようこそ、WINGSプロジェクトへ!!</p>
+  }>
+  </TitledPanel>
+);
+
+// もしくは変数に切り出すことも可能
+const titleChild = <p>メンバー募集中！</p>;
+const bodyChild = <p>ようこそ、WINGSプロジェクトへ!!</p>
+root.render(
+  <TitledPanel title={titleChild} body={bodyChild} />
+);
+
+// key属性をキーに目的の要素を取り出す
+root.render(
+  <TitledPanel>
+    <p key="title">メンバー大歓迎</p>
+    <p key="body">ようこそ、WINGSプロジェクトへ!!!!!</p>
+  </TitledPanel>
+);
+
+// childrenに対しパラメータを渡す
+root.render(
+  <ListTemplate src={books}>
+  {/*関数化することで引数として渡すことができる(elem)*/}
+  {elem =>
+    <>
+      <dt>
+        <a href={'https://wings.msn.to/books/${elem.isbn}/${elem.isbn}.jpg'}>
+         {elem.title} ({elem.price}円)
+        </a>
+      </dt>
+      <dd>{elem.summary}</dd>
+    </>
+  }
+  </ListTemplate>
+);
+
+// レンダードロップ
+root.render(
+  <ListTemplate src={books} render={ elem => (
+    <>
+      <dt>
+        <a href={'https://wings.msn.to/books/${elem.isbn}/${elem.isbn}.jpg'}>
+          {elem.title} ({elem.price}円)
+        </a>
+      </dt>
+      <dd>{elem.summary}</dd>
+    </>
+  )}
+  ></ListTemplate>
+);
+
+// myName属性を指定しないで呼び出した際のケース
+// root.render(
+//   <MyHello />
+// );
+
+root.render(
+  // OKのケース
+  <TypeProp prop1={new Member()} />
+
+  // NGのケース
+  // <TypeProp prop1="hoge"/>
+);
+
+root.render(
+  // OKのケース
+  <TypeProp prop2={"男性"} />
+
+  // NGのケース
+  // <TypeProp prop2="hoge"/>
+);
+
+root.render(
+  // OKのケース
+  <TypeProp prop3="鈴木" />
+
+  // NGのケース
+  // <TypeProp prop3={new Number()}/>
+);
+
+root.render(
+  // OKのケース
+  <TypeProp prop4={[2, 4]} />
+
+  // NGのケース
+  // <TypeProp prop4={[12, "山田"]} />
+);
+
+root.render(
+  // OKのケース
+  <TypeProp prop5={{ '鈴木': 15, '佐藤': 30}} />
+
+  // NGのケース
+  // <TypeProp prop5={{ '鈴木': 15, '佐藤': '三十'}} />
+);
+
+root.render(
+  // OKのケース
+  <TypeProp prop6={{ name: '鈴木', age: 30, sex: '女性', blood: 'A'}} />
+
+  // NGのケース
+  // <TypeProp prop6={{ age: 30, sex: '女性'}} />
+);
+
+// 子コンポーネントから親コンポーネントに対して情報を渡す
+root.render(
+  <StateParent />
+);
+
+// マウスに関するイベント
+root.render(
+  <EventMouse
+  alt="ロゴ画像"
+  beforeSrc="https://www.web-deli.com/image/linkbanner_l.gif"
+  afterSrc="https://www.web-deli.com/image/home_chara.gif" />
+);
+
+// 画像が読み込めなかった際、ダミー画像を表示させる
+root.render(
+  <EventError src="./image/wings.jpg"
+    alt="サンプル画像" />
+);
+
+// クリック時にイベントオブジェクトをログ出力する
+root.render(
+  <EventObj />
+);
+
+// テキストボックスの中でctrl + qキーが押下された際にメッセージを表示させる
+root.render(
+  <EventKey />
+);
+
+// イベントハンドラーに任意の引数を渡す
+root.render(
+  <EventArgs />
+);
+
+// 独自イベント属性を用いて実行する
+root.render(
+  <EventArgs2 />
+);
+
+// イベントの伝播について
+root.render(
+  <EventPropagation />
+);
+
+// 初回イベントでのみハンドラーを実行させる
+root.render(
+  <EventOnce />
+);
+
+// Passiveモードでイベントハンドラーを設置する
+root.render(
+  <EventPassive />
+);
+
 reportWebVitals();
