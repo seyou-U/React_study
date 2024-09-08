@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from 'yup';
+import yup from './yup.jp.js';
 
 // 特定のフィールドだけでなく、複数のフィールドに適応したい場合に有効
 // yup.addMethod(データ型, 検証名, 検証ルール)
@@ -33,23 +33,23 @@ const schema = yup.object({
       .string()
       .label('名前')
       .transform((value, orgValue) => value.normalize('NFKC'))
-      .required('${label}は必須入力です。')
-      .max(20, '${label}は${max}文字以内で入力してください。')
+      .required()
+      .max(20)
       .trim().lowercase(),
     gender: yup
       .string()
       .label('性別')
-      .required('${label}は必須項目です。'),
+      .required(),
     email: yup
       .string()
       .label('メールアドレス')
-      .required('${label}は必須入力です。')
-      .email('${label}の形式が不正です。'),
+      .required()
+      .email(),
     memo: yup
       .string()
       .label('備考')
-      .required('${label}は必須入力です。')
-      .min(10, '${label}は${min}文字以上で入力してください。')
+      .required()
+      .min(10)
       .ng()
       // testメソッドを用いて独自のルールを作成することができる。
       // test(検証名, 検証メッセージ, 検証ルール(引数は入力値、戻り値は真偽値))
