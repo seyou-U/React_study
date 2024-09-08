@@ -39,7 +39,7 @@ export default function FormBasic() {
         <form onSubmit={handleSubmit(onsubmit, onerror)} onValidate>
             {/* 検証ルールなどをフォームに紐付け */}
             <div>
-                <label>名前:</label><br/>
+                <label htmlFor="name">名前:</label><br/>
                 {/* register(フィールド名, [動作オプション]) */}
                 <input id="name" type="text"
                 {...register('name', {
@@ -53,7 +53,7 @@ export default function FormBasic() {
                 <div>{errors.name?.message}</div>
             </div>
             <div>
-                <label>性別:</label><br/>
+                <label htmlFor="gender">性別:</label><br/>
                 <label>
                     <input value="male" type="radio"
                     {...register('gender', {

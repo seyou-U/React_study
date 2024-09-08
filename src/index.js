@@ -35,6 +35,7 @@ import StateNestImmer from './chap04/StateNestImmer';
 import StateNestImmer2 from './chap04/StateNestImmer2';
 import StateTodo from './chap04/StateTodo';
 import FormBasic from './chap04/FormBasic';
+import FormYup from './chap04/FormYup';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -408,6 +409,11 @@ root.render(
 // React Hook Formの使い方
 root.render(
   <FormBasic />
+);
+
+// 検証ライブラリ Yupと連携した際の記述方法について
+root.render(
+  <FormYup />
 );
 
 reportWebVitals();
