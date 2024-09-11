@@ -37,6 +37,8 @@ import StateTodo from './chap04/StateTodo';
 import FormBasic from './chap04/FormBasic';
 import FormYup from './chap04/FormYup';
 import LazyMulti from './chap05/LazyMulti';
+import SuspenseSimple from './chap05/SuspenseSimple';
+import SuspenseResult from './chap05/SuspenseResult';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -421,5 +423,15 @@ root.render(
 root.render(
   <LazyMulti />
 )
+
+// ThrowされたPromiseによる非同期処理
+root.render(
+  <SuspenseSimple />
+);
+
+// Promiseの結果を表示させる
+root.render(
+  <SuspenseResult />
+);
 
 reportWebVitals();
