@@ -39,6 +39,7 @@ import FormYup from './chap04/FormYup';
 import LazyMulti from './chap05/LazyMulti';
 import SuspenseSimple from './chap05/SuspenseSimple';
 import SuspenseResult from './chap05/SuspenseResult';
+import ProfilerBasic from './chap05/ProfilerBasic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -432,6 +433,11 @@ root.render(
 // Promiseの結果を表示させる
 root.render(
   <SuspenseResult />
+);
+
+// コンポーネントの描画時間を計測する
+root.render(
+  <ProfilerBasic />
 );
 
 reportWebVitals();
