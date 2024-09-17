@@ -40,6 +40,9 @@ import LazyMulti from './chap05/LazyMulti';
 import SuspenseSimple from './chap05/SuspenseSimple';
 import SuspenseResult from './chap05/SuspenseResult';
 import ProfilerBasic from './chap05/ProfilerBasic';
+import StyledBasic from './chap05/StyledBasic';
+import StyledCSS from './chap05/StyledCss';
+import StyledDynamic from './chap05/StyledDynamic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -438,6 +441,30 @@ root.render(
 // コンポーネントの描画時間を計測する
 root.render(
   <ProfilerBasic />
+);
+
+// JSX式にスタイルを埋め込む
+root.render(
+  <>
+    <h3>Styled JSXの基本</h3>
+    <StyledBasic />
+  </>
+);
+
+// JSXのスタイルを外部化し定義する
+root.render(
+  <>
+    <h3>Styled JSXの基本</h3>
+    <StyledCSS />
+  </>
+);
+
+// ダイナミックスタイル (動的にスタイルを変更する)
+root.render(
+  <StyledDynamic theme={{
+    radius: true,
+    color: 'royalblue'
+  }} />
 );
 
 reportWebVitals();
