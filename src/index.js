@@ -43,6 +43,11 @@ import ProfilerBasic from './chap05/ProfilerBasic';
 import StyledBasic from './chap05/StyledBasic';
 import StyledCSS from './chap05/StyledCss';
 import StyledDynamic from './chap05/StyledDynamic';
+import StyledComp from './chap05/StyledComp';
+import MyButton, { MyStyledButton } from './chap05/StyledComp2';
+import StyledCommon from './chap05/StyledCommon';
+import StyledGlobal from './chap05/StyledGlobal';
+import StyledProps from './chap05/StyledProps';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -465,6 +470,37 @@ root.render(
     radius: true,
     color: 'royalblue'
   }} />
+);
+
+// 標準タグを拡張してスタイル付きのタグを定義する
+root.render(
+  <StyledComp />
+);
+
+// 既存のコンポーネントにスタイル付けする
+root.render(
+  <>
+    <MyButton>ボタン</MyButton>
+    <MyStyledButton>ボタン</MyStyledButton>
+  </>
+);
+
+// スタイル定義を外部化する
+root.render(
+  <StyledCommon />
+);
+
+// グローバルスタイルの定義と取り込み
+root.render(
+  <>
+    <StyledGlobal />
+    <StyledComp />
+  </>
+);
+
+// Props経由で動的なスタイルを定義する
+root.render(
+  <StyledProps />
 );
 
 reportWebVitals();
