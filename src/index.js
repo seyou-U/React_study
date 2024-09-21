@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -48,6 +49,8 @@ import MyButton, { MyStyledButton } from './chap05/StyledComp2';
 import StyledCommon from './chap05/StyledCommon';
 import StyledGlobal from './chap05/StyledGlobal';
 import StyledProps from './chap05/StyledProps';
+import EmotionJsx from './chap05/EmotionJsx';
+import { css, Global } from '@emotion/react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -501,6 +504,26 @@ root.render(
 // Props経由で動的なスタイルを定義する
 root.render(
   <StyledProps />
+);
+
+// Emotion Styled JSXライクな記法
+root.render(
+  <EmotionJsx />
+);
+
+// グローバルスタイルを定義する
+const global = css`
+  body{
+    background-color: Yellow;
+  }
+`;
+
+// 上記のグローバルスタイルを帝王した状態で先程のEmotionJsxコンポーネントを呼び出す
+root.render(
+  <>
+    <Global styles={global} />
+    <EmotionJsx />
+  </>
 );
 
 reportWebVitals();
