@@ -51,6 +51,7 @@ import StyledGlobal from './chap05/StyledGlobal';
 import StyledProps from './chap05/StyledProps';
 import EmotionJsx from './chap05/EmotionJsx';
 import { css, Global } from '@emotion/react';
+import PortalBasic from './chap05/PortalBasic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -523,6 +524,14 @@ root.render(
   <>
     <Global styles={global} />
     <EmotionJsx />
+  </>
+);
+
+// ポータルの実装
+root.render(
+  <>
+    <div id='dialog'></div>
+    <PortalBasic />
   </>
 );
 
