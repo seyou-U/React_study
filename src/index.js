@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -36,6 +37,24 @@ import StateNestImmer2 from './chap04/StateNestImmer2';
 import StateTodo from './chap04/StateTodo';
 import FormBasic from './chap04/FormBasic';
 import FormYup from './chap04/FormYup';
+import LazyMulti from './chap05/LazyMulti';
+import SuspenseSimple from './chap05/SuspenseSimple';
+import SuspenseResult from './chap05/SuspenseResult';
+import ProfilerBasic from './chap05/ProfilerBasic';
+import StyledBasic from './chap05/StyledBasic';
+import StyledCSS from './chap05/StyledCss';
+import StyledDynamic from './chap05/StyledDynamic';
+import StyledComp from './chap05/StyledComp';
+import MyButton, { MyStyledButton } from './chap05/StyledComp2';
+import StyledCommon from './chap05/StyledCommon';
+import StyledGlobal from './chap05/StyledGlobal';
+import StyledProps from './chap05/StyledProps';
+import EmotionJsx from './chap05/EmotionJsx';
+import { css, Global } from '@emotion/react';
+import PortalBasic from './chap05/PortalBasic';
+import ErrorRoot from './chap05/ErrorRoot';
+import ErrorRetryRoot from './chap05/ErrorRetryRoot';
+import ErrorEventRoot from './chap05/ErrorEventRoot';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -414,6 +433,124 @@ root.render(
 // 検証ライブラリ Yupと連携した際の記述方法について
 root.render(
   <FormYup />
+);
+
+// lazy()関数を用いたコンポーネントの遅延
+root.render(
+  <LazyMulti />
+)
+
+// ThrowされたPromiseによる非同期処理
+root.render(
+  <SuspenseSimple />
+);
+
+// Promiseの結果を表示させる
+root.render(
+  <SuspenseResult />
+);
+
+// コンポーネントの描画時間を計測する
+root.render(
+  <ProfilerBasic />
+);
+
+// JSX式にスタイルを埋め込む
+root.render(
+  <>
+    <h3>Styled JSXの基本</h3>
+    <StyledBasic />
+  </>
+);
+
+// JSXのスタイルを外部化し定義する
+root.render(
+  <>
+    <h3>Styled JSXの基本</h3>
+    <StyledCSS />
+  </>
+);
+
+// ダイナミックスタイル (動的にスタイルを変更する)
+root.render(
+  <StyledDynamic theme={{
+    radius: true,
+    color: 'royalblue'
+  }} />
+);
+
+// 標準タグを拡張してスタイル付きのタグを定義する
+root.render(
+  <StyledComp />
+);
+
+// 既存のコンポーネントにスタイル付けする
+root.render(
+  <>
+    <MyButton>ボタン</MyButton>
+    <MyStyledButton>ボタン</MyStyledButton>
+  </>
+);
+
+// スタイル定義を外部化する
+root.render(
+  <StyledCommon />
+);
+
+// グローバルスタイルの定義と取り込み
+root.render(
+  <>
+    <StyledGlobal />
+    <StyledComp />
+  </>
+);
+
+// Props経由で動的なスタイルを定義する
+root.render(
+  <StyledProps />
+);
+
+// Emotion Styled JSXライクな記法
+root.render(
+  <EmotionJsx />
+);
+
+// グローバルスタイルを定義する
+const global = css`
+  body{
+    background-color: Yellow;
+  }
+`;
+
+// 上記のグローバルスタイルを帝王した状態で先程のEmotionJsxコンポーネントを呼び出す
+root.render(
+  <>
+    <Global styles={global} />
+    <EmotionJsx />
+  </>
+);
+
+// ポータルの実装
+root.render(
+  <>
+    <div id='dialog'></div>
+    <PortalBasic />
+  </>
+);
+
+// ErrorBoundaryについて
+root.render(
+  <ErrorRoot />
+);
+
+// ErrorBoundary詳細な処理を返却
+root.render(
+  <ErrorRetryRoot />
+);
+
+// ErrorBoundary:イベントハンドラーからの例外処理
+root.render(
+  <ErrorEventRoot />
 );
 
 reportWebVitals();
