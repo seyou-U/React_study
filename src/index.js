@@ -52,6 +52,8 @@ import StyledProps from './chap05/StyledProps';
 import EmotionJsx from './chap05/EmotionJsx';
 import { css, Global } from '@emotion/react';
 import PortalBasic from './chap05/PortalBasic';
+import ErrorRoot from './chap05/ErrorRoot';
+import ErrorRetryRoot from './chap05/ErrorRetryRoot';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -533,6 +535,16 @@ root.render(
     <div id='dialog'></div>
     <PortalBasic />
   </>
+);
+
+// ErrorBoundaryについて
+root.render(
+  <ErrorRoot />
+);
+
+// ErrorBoundary詳細な処理を返却
+root.render(
+  <ErrorRetryRoot />
 );
 
 reportWebVitals();
