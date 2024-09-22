@@ -54,6 +54,7 @@ import { css, Global } from '@emotion/react';
 import PortalBasic from './chap05/PortalBasic';
 import ErrorRoot from './chap05/ErrorRoot';
 import ErrorRetryRoot from './chap05/ErrorRetryRoot';
+import ErrorEventRoot from './chap05/ErrorEventRoot';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -545,6 +546,11 @@ root.render(
 // ErrorBoundary詳細な処理を返却
 root.render(
   <ErrorRetryRoot />
+);
+
+// ErrorBoundary:イベントハンドラーからの例外処理
+root.render(
+  <ErrorEventRoot />
 );
 
 reportWebVitals();
