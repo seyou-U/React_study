@@ -55,6 +55,12 @@ import PortalBasic from './chap05/PortalBasic';
 import ErrorRoot from './chap05/ErrorRoot';
 import ErrorRetryRoot from './chap05/ErrorRetryRoot';
 import ErrorEventRoot from './chap05/ErrorEventRoot';
+import MaterialBasic from './chap06/MaterialBasic';
+import MaterialDrawer from './chap06/MaterialDrawer';
+import MaterialGrid from './chap06/MaterialGrid';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import theme from './chap06/theme';
+import MaterialMode from './chap06/MaterialMode';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -551,6 +557,36 @@ root.render(
 // ErrorBoundary:イベントハンドラーからの例外処理
 root.render(
   <ErrorEventRoot />
+);
+
+// MUIライブラリを用いた実装
+root.render(
+  <MaterialBasic />
+);
+
+// MUIライブラリ / ドロワーの実装
+root.render(
+  <MaterialDrawer />
+);
+
+// MUIライブラリ / グリッド上にする
+// (備考) グリッドはレスポンシブデザインにも対応している
+root.render(
+  <MaterialGrid />
+);
+
+// MUIカスタマイズ / テーマを適応する
+// <ThemeProvider>要素を利用することで適応させることができる
+root.render(
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <MaterialBasic />
+  </ThemeProvider>
+);
+
+// MUIライブラリ / ライト、ダークモードに応じて切り替える
+root.render(
+  <MaterialMode />
 );
 
 reportWebVitals();
