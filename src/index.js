@@ -61,6 +61,7 @@ import MaterialGrid from './chap06/MaterialGrid';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './chap06/theme';
 import MaterialMode from './chap06/MaterialMode';
+import FormMui from './chap06/FormMui';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -587,6 +588,11 @@ root.render(
 // MUIライブラリ / ライト、ダークモードに応じて切り替える
 root.render(
   <MaterialMode />
+);
+
+// ReactHookFormとMUIを組み合わせたフォームの実装
+root.render(
+  <FormMui />
 );
 
 reportWebVitals();
