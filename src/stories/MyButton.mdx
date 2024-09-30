@@ -1,0 +1,25 @@
+import { Meta, Title, Description, Primary,
+  Controls, Story, Canvas } from '@storybook/blocks';
+import * as MyButtonStories from './MyButton.stories';
+
+{/* ストーリーとドキュメントを紐付けさせることができる, name属性付与することでドキュメントのメニュー名を変更することもできる */}
+<Meta of={MyButtonStories} name="API Ref"/>
+
+<Title />
+
+<Description />
+
+<Primary />
+
+<Controls />
+
+**※見た目を変更するには表内のControl列を操作してください**
+
+## 具体的な見た目
+
+backgrondColor属性でボタンの背景色を変更することもできます。
+
+<Canvas of={MyButtonStories.Yellow} />
+
+***
+_Copyright WINGS Project, 2023-_
