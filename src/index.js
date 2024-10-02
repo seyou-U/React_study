@@ -62,6 +62,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './chap06/theme';
 import MaterialMode from './chap06/MaterialMode';
 import FormMui from './chap06/FormMui';
+import QueryPre from './chap06/QueryPre';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -593,6 +594,11 @@ root.render(
 // ReactHookFormとMUIを組み合わせたフォームの実装
 root.render(
   <FormMui />
+);
+
+// React Queryを用いない場合に外部APIを呼び出す
+root.render(
+  <QueryPre />
 );
 
 reportWebVitals();
