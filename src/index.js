@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './chap02/class.css'
@@ -65,6 +65,7 @@ import FormMui from './chap06/FormMui';
 import QueryPre from './chap06/QueryPre';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import QueryBasic from './chap06/QueryBasic';
+import { ErrorBoundary } from 'react-error-boundary';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -604,12 +605,22 @@ root.render(
 );
 
 // React Queryを用いた外部APIの呼び出し
-// QueryClientを準備し、QueryClientProvider要素に渡す
-const cli = new QueryClient();
+// QueryClientを準備し、QueryClientProvider要素に渡す / オプションでSuspenseモードを利用する
+const cli = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+});
 root.render(
-  <QueryClientProvider client={cli}>
-    <QueryBasic />
-  </QueryClientProvider>
+  <Suspense fallback={<p>Loading...</p>}>
+    <ErrorBoundary fallback={<div>エラーが発生しました。</div>}>
+      <QueryClientProvider client={cli}>
+        <QueryBasic />
+      </QueryClientProvider>
+    </ErrorBoundary>
+  </Suspense>
 );
 
 reportWebVitals();

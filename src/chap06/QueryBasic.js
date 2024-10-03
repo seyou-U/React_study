@@ -14,15 +14,8 @@ const fetchWeather = async() => {
 export default function QueryBasic() {
     // fetchWeather関数でデータを取得する
     // useQuery関数でクエリを発行する。useQuery(一意なkey, query関数)
-    const {data, isLoading, isError, error} = useQuery('weather', fetchWeather);
-    // ロード中であれば、ローディングメッセージを表示
-    if (isLoading) {
-      return <p>Loading...</p>;
-    }
-    // 通信エラーが発生した場合には、エラーメッセージを表示
-    if (isError) {
-      return <p>Error: {error.message}</p>;
-    }
+    const {data} = useQuery('weather', fetchWeather);
+
     return (
     // figureタグは図や写真などのまとまりを表すタグ
       <figure>
