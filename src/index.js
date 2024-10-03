@@ -63,6 +63,8 @@ import theme from './chap06/theme';
 import MaterialMode from './chap06/MaterialMode';
 import FormMui from './chap06/FormMui';
 import QueryPre from './chap06/QueryPre';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import QueryBasic from './chap06/QueryBasic';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -599,6 +601,15 @@ root.render(
 // React Queryを用いない場合に外部APIを呼び出す
 root.render(
   <QueryPre />
+);
+
+// React Queryを用いた外部APIの呼び出し
+// QueryClientを準備し、QueryClientProvider要素に渡す
+const cli = new QueryClient();
+root.render(
+  <QueryClientProvider client={cli}>
+    <QueryBasic />
+  </QueryClientProvider>
 );
 
 reportWebVitals();

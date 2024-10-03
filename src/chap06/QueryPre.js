@@ -9,7 +9,7 @@ const fetchWeather = async () => {
     // 処理を遅延させ、ローディングメッセージを表示させるための休止処理
     await sleep(2000);
     // 動作確認完了したため、Apiキーをダミーに変更している
-    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=HogeHoge&lang=ja&appid=××××××××××××××××××`);
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Tokyo&lang=ja&appid=××××××××××××××××××`);
 
     // 戻り値はPromise (非同期通信の結果を成功もしくは失敗で返すオブジェクト)
     if (res.ok) { return res.json(); }
