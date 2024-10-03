@@ -1,11 +1,16 @@
 /** @jsxImportSource @emotion/react */
-import React from 'react';
+import { css, Global } from '@emotion/react';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { ErrorBoundary } from 'react-error-boundary';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './chap02/class.css'
 import books from './chap03/books';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
+import EmotionJsx from './chap05/EmotionJsx';
 import EventArgs from './chap03/EventArgs';
 import EventArgs2 from './chap03/EventArgs2';
 import EventBasic from './chap03/EventBasic';
@@ -13,55 +18,54 @@ import EventError from './chap03/EventError';
 import EventKey from './chap03/EventKey';
 import EventMouse from './chap03/EventMouse';
 import EventObj from './chap03/EventObj';
+import EventOnce from './chap03/EventOnce';
+import EventPassive from './chap03/EventPassive';
+import EventPropagation from './chap03/EventPropagation';
+import ErrorEventRoot from './chap05/ErrorEventRoot';
+import ErrorRetryRoot from './chap05/ErrorRetryRoot';
+import ErrorRoot from './chap05/ErrorRoot';
 import ForList from './chap03/ForList';
+import FormBasic from './chap04/FormBasic';
+import FormCheckMulti from './chap04/FormCheckMulti';
+import FormMui from './chap06/FormMui';
+import FormList from './chap04/FormList';
+import FormRadio from './chap04/FormRadio';
+import FormYup from './chap04/FormYup';
 import ForNest from './chap03/ForNest';
+import LazyMulti from './chap05/LazyMulti';
+import ListTemplate from './chap03/ListTemplate';
+import MaterialBasic from './chap06/MaterialBasic';
+import MaterialDrawer from './chap06/MaterialDrawer';
+import MaterialGrid from './chap06/MaterialGrid';
+import MaterialMode from './chap06/MaterialMode';
+import MyButton, { MyStyledButton } from './chap05/StyledComp2';
 import MyHello from './chap03/MyHello';
+import ProfilerBasic from './chap05/ProfilerBasic';
+import PortalBasic from './chap05/PortalBasic';
+import QueryBasic from './chap06/QueryBasic';
+import QueryPre from './chap06/QueryPre';
 import StateBasic from './chap03/StateBasic';
 import StateParent from './chap03/StateParent';
 import SelectStyle from './chap03/SelectStyle';
-import StyledPanel from './chap03/StyledPanel';
-import TitledPanel from './chap03/TitledPanel';
-import TypeProp, {Member} from './chap03/TypeProp';
-import ListTemplate from './chap03/ListTemplate';
-import EventPropagation from './chap03/EventPropagation';
-import EventOnce from './chap03/EventOnce';
-import EventPassive from './chap03/EventPassive';
 import StateForm from './chap04/StateForm';
 import StateFormUC from './chap04/StateFormUC';
-import FormList from './chap04/FormList';
-import FormRadio from './chap04/FormRadio';
-import FormCheckMulti from './chap04/FormCheckMulti';
 import StateNest from './chap04/StateNest';
 import StateNestImmer from './chap04/StateNestImmer';
 import StateNestImmer2 from './chap04/StateNestImmer2';
 import StateTodo from './chap04/StateTodo';
-import FormBasic from './chap04/FormBasic';
-import FormYup from './chap04/FormYup';
-import LazyMulti from './chap05/LazyMulti';
-import SuspenseSimple from './chap05/SuspenseSimple';
-import SuspenseResult from './chap05/SuspenseResult';
-import ProfilerBasic from './chap05/ProfilerBasic';
 import StyledBasic from './chap05/StyledBasic';
 import StyledCSS from './chap05/StyledCss';
-import StyledDynamic from './chap05/StyledDynamic';
-import StyledComp from './chap05/StyledComp';
-import MyButton, { MyStyledButton } from './chap05/StyledComp2';
 import StyledCommon from './chap05/StyledCommon';
+import StyledComp from './chap05/StyledComp';
+import StyledDynamic from './chap05/StyledDynamic';
 import StyledGlobal from './chap05/StyledGlobal';
+import StyledPanel from './chap03/StyledPanel';
 import StyledProps from './chap05/StyledProps';
-import EmotionJsx from './chap05/EmotionJsx';
-import { css, Global } from '@emotion/react';
-import PortalBasic from './chap05/PortalBasic';
-import ErrorRoot from './chap05/ErrorRoot';
-import ErrorRetryRoot from './chap05/ErrorRetryRoot';
-import ErrorEventRoot from './chap05/ErrorEventRoot';
-import MaterialBasic from './chap06/MaterialBasic';
-import MaterialDrawer from './chap06/MaterialDrawer';
-import MaterialGrid from './chap06/MaterialGrid';
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import SuspenseSimple from './chap05/SuspenseSimple';
+import SuspenseResult from './chap05/SuspenseResult';
 import theme from './chap06/theme';
-import MaterialMode from './chap06/MaterialMode';
-import FormMui from './chap06/FormMui';
+import TitledPanel from './chap03/TitledPanel';
+import TypeProp, {Member} from './chap03/TypeProp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -593,6 +597,30 @@ root.render(
 // ReactHookFormとMUIを組み合わせたフォームの実装
 root.render(
   <FormMui />
+);
+
+// React Queryを用いない場合に外部APIを呼び出す
+root.render(
+  <QueryPre />
+);
+
+// React Queryを用いた外部APIの呼び出し
+// QueryClientを準備し、QueryClientProvider要素に渡す / オプションでSuspenseモードを利用する
+const cli = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true,
+    },
+  },
+});
+root.render(
+  <Suspense fallback={<p>Loading...</p>}>
+    <ErrorBoundary fallback={<div>エラーが発生しました。</div>}>
+      <QueryClientProvider client={cli}>
+        <QueryBasic />
+      </QueryClientProvider>
+    </ErrorBoundary>
+  </Suspense>
 );
 
 reportWebVitals();
