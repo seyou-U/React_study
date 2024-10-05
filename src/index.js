@@ -66,6 +66,9 @@ import SuspenseResult from './chap05/SuspenseResult';
 import theme from './chap06/theme';
 import TitledPanel from './chap03/TitledPanel';
 import TypeProp, {Member} from './chap03/TypeProp';
+import StateEffect from './chap07/StateEffect';
+import HookTimer from './chap07/HookTimer';
+import HookEffect from './chap07/HookEffect';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -621,6 +624,21 @@ root.render(
       </QueryClientProvider>
     </ErrorBoundary>
   </Suspense>
+);
+
+// useEffect関数の使い方について
+root.render(
+  <StateEffect init={0} />
+);
+
+// setInterval関数を用いたタイマーの準備
+root.render(
+  <HookTimer init={10} />
+);
+
+// useEffect関数とuseLayoutEffect関数の違いについて確認できる関数 (解説のためのコード)
+root.render(
+  <HookEffect init={10} />
 );
 
 reportWebVitals();
