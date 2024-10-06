@@ -72,6 +72,7 @@ import HookTimer from './chap07/HookTimer';
 import HookRef from './chap07/HookRef';
 import HookRefNg from './chap07/HookRefNg';
 import HookRefForward from './chap07/HookRefForward';
+import HookCallbackRef from './chap07/HookCallbackRef';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -657,6 +658,11 @@ root.render(
 // コンポーネントを跨いで参照する (子コンポーネント配下の要素参照)
 root.render(
   <HookRefForward />
+);
+
+// コールバックRef
+root.render(
+  <HookCallbackRef />
 );
 
 reportWebVitals();
