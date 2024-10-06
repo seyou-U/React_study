@@ -67,8 +67,11 @@ import theme from './chap06/theme';
 import TitledPanel from './chap03/TitledPanel';
 import TypeProp, {Member} from './chap03/TypeProp';
 import StateEffect from './chap07/StateEffect';
-import HookTimer from './chap07/HookTimer';
 import HookEffect from './chap07/HookEffect';
+import HookTimer from './chap07/HookTimer';
+import HookRef from './chap07/HookRef';
+import HookRefNg from './chap07/HookRefNg';
+import HookRefForward from './chap07/HookRefForward';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -639,6 +642,21 @@ root.render(
 // useEffect関数とuseLayoutEffect関数の違いについて確認できる関数 (解説のためのコード)
 root.render(
   <HookEffect init={10} />
+);
+
+// useRef関数を使用しない場合の簡易的なタイマーアプリについて
+root.render(
+  <HookRefNg />
+);
+
+// useRef関数を使用した場合の簡易的なタイマーアプリについて
+root.render(
+  <HookRef />
+);
+
+// コンポーネントを跨いで参照する (子コンポーネント配下の要素参照)
+root.render(
+  <HookRefForward />
 );
 
 reportWebVitals();
