@@ -73,6 +73,7 @@ import HookRef from './chap07/HookRef';
 import HookRefNg from './chap07/HookRefNg';
 import HookRefForward from './chap07/HookRefForward';
 import HookCallbackRef from './chap07/HookCallbackRef';
+import HookReducer from './chap07/HookReducer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -663,6 +664,11 @@ root.render(
 // コールバックRef
 root.render(
   <HookCallbackRef />
+);
+
+// useReducerを用いたフックの基本
+root.render(
+  <HookReducer init={0} />
 );
 
 reportWebVitals();
