@@ -74,6 +74,8 @@ import HookRefNg from './chap07/HookRefNg';
 import HookRefForward from './chap07/HookRefForward';
 import HookCallbackRef from './chap07/HookCallbackRef';
 import HookReducer from './chap07/HookReducer';
+import HookReducerUp from './chap07/HookReducerUp';
+import HookReducerInit from './chap07/HookReducerInit';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -669,6 +671,16 @@ root.render(
 // useReducerを用いたフックの基本
 root.render(
   <HookReducer init={0} />
+);
+
+// Reducerを複数のアクションに対応させる
+root.render(
+  <HookReducerUp init={0} />
+);
+
+// useReducerを用いている際の初期値が固定値でない場合について
+root.render(
+  <HookReducerInit init={0} />
 );
 
 reportWebVitals();
