@@ -76,6 +76,9 @@ import HookCallbackRef from './chap07/HookCallbackRef';
 import HookReducer from './chap07/HookReducer';
 import HookReducerUp from './chap07/HookReducerUp';
 import HookReducerInit from './chap07/HookReducerInit';
+import HookContext from './chap07/HookContext';
+import MyThemeProvider from './chap07/MyThemeProvider';
+import HookThemeButton from './chap07/HookThemeButton';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -681,6 +684,18 @@ root.render(
 // useReducerを用いている際の初期値が固定値でない場合について
 root.render(
   <HookReducerInit init={0} />
+);
+
+// useContextを用いた基本実装
+root.render(
+  <HookContext />
+);
+
+// コンテキストを利用してテーマを切り替える
+root.render(
+  <MyThemeProvider>
+    <HookThemeButton />
+  </MyThemeProvider>
 );
 
 reportWebVitals();
