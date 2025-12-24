@@ -66,6 +66,21 @@ import SuspenseResult from './chap05/SuspenseResult';
 import theme from './chap06/theme';
 import TitledPanel from './chap03/TitledPanel';
 import TypeProp, {Member} from './chap03/TypeProp';
+import StateEffect from './chap07/StateEffect';
+import HookEffect from './chap07/HookEffect';
+import HookTimer from './chap07/HookTimer';
+import HookRef from './chap07/HookRef';
+import HookRefNg from './chap07/HookRefNg';
+import HookRefForward from './chap07/HookRefForward';
+import HookCallbackRef from './chap07/HookCallbackRef';
+import HookReducer from './chap07/HookReducer';
+import HookReducerUp from './chap07/HookReducerUp';
+import HookReducerInit from './chap07/HookReducerInit';
+import HookContext from './chap07/HookContext';
+import MyThemeProvider from './chap07/MyThemeProvider';
+import HookThemeButton from './chap07/HookThemeButton';
+import { RecoilRoot } from 'recoil';
+import RecoilCounter from './chap07/RecoilCounter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -621,6 +636,76 @@ root.render(
       </QueryClientProvider>
     </ErrorBoundary>
   </Suspense>
+);
+
+// useEffect関数の使い方について
+root.render(
+  <StateEffect init={0} />
+);
+
+// setInterval関数を用いたタイマーの準備
+root.render(
+  <HookTimer init={10} />
+);
+
+// useEffect関数とuseLayoutEffect関数の違いについて確認できる関数 (解説のためのコード)
+root.render(
+  <HookEffect init={10} />
+);
+
+// useRef関数を使用しない場合の簡易的なタイマーアプリについて
+root.render(
+  <HookRefNg />
+);
+
+// useRef関数を使用した場合の簡易的なタイマーアプリについて
+root.render(
+  <HookRef />
+);
+
+// コンポーネントを跨いで参照する (子コンポーネント配下の要素参照)
+root.render(
+  <HookRefForward />
+);
+
+// コールバックRef
+root.render(
+  <HookCallbackRef />
+);
+
+// useReducerを用いたフックの基本
+root.render(
+  <HookReducer init={0} />
+);
+
+// Reducerを複数のアクションに対応させる
+root.render(
+  <HookReducerUp init={0} />
+);
+
+// useReducerを用いている際の初期値が固定値でない場合について
+root.render(
+  <HookReducerInit init={0} />
+);
+
+// useContextを用いた基本実装
+root.render(
+  <HookContext />
+);
+
+// コンテキストを利用してテーマを切り替える
+root.render(
+  <MyThemeProvider>
+    <HookThemeButton />
+  </MyThemeProvider>
+);
+
+// Recoilの基本
+root.render(
+  // Recoilを利用するためにRecoilRoot要素で括る必要がある
+  <RecoilRoot>
+    <RecoilCounter />
+  </RecoilRoot>
 );
 
 reportWebVitals();

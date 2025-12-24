@@ -1,7 +1,7 @@
 import MyButton from "./MyButton";
 import { action } from '@storybook/addon-actions';
 import { expect } from "@storybook/jest";
-import { userEvent, within} from "@storybook/test";
+import { userEvent, within} from 'storybook/test';
 
 // MyButtonコンポーネントに応じたストーリーを作る
 // 基本情報を宣言する
