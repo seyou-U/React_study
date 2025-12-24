@@ -79,6 +79,8 @@ import HookReducerInit from './chap07/HookReducerInit';
 import HookContext from './chap07/HookContext';
 import MyThemeProvider from './chap07/MyThemeProvider';
 import HookThemeButton from './chap07/HookThemeButton';
+import { RecoilRoot } from 'recoil';
+import RecoilCounter from './chap07/RecoilCounter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -696,6 +698,14 @@ root.render(
   <MyThemeProvider>
     <HookThemeButton />
   </MyThemeProvider>
+);
+
+// Recoilの基本
+root.render(
+  // Recoilを利用するためにRecoilRoot要素で括る必要がある
+  <RecoilRoot>
+    <RecoilCounter />
+  </RecoilRoot>
 );
 
 reportWebVitals();
